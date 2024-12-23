@@ -1,0 +1,259 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mythical Games - Fun and challenging games to test your skills!">
+    <meta name="keywords" content="Mythical Games, Online Games, Action, Puzzle, Multiplayer">
+    <meta name="author" content="Example Developer">
+    <title>Mythical Games</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0d1b2a;
+            color: #e0e6f1;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(90deg, #1d3557, #457b9d);
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #a8dadc;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #1d3557;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #457b9d;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 5px solid #a8dadc;
+        }
+
+        .game-description {
+            font-size: 1rem;
+            color: #f1faee;
+            margin-bottom: 20px;
+        }
+
+        /* Game Frame */
+        .game-frame {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 15px;
+            background-color: #0d1b2a;
+            box-shadow: 0 4px 8px rgba(69, 123, 157, 0.5);
+            transition: box-shadow 0.3s;
+        }
+
+        .game-frame:hover {
+            box-shadow: 0 0 20px 5px rgba(69, 123, 157, 0.8);
+        }
+
+        /* Button Bar */
+        .button-bar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #457b9d;
+            padding: 15px;
+            border-radius: 0 0 15px 15px;
+            margin-top: -10px;
+            position: relative;
+        }
+
+        .button-bar button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            color: #f1faee;
+            background-color: #1d3557;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button-bar button i {
+            margin-right: 5px;
+        }
+
+        .button-bar button:hover {
+            background-color: #a8dadc;
+            color: #1d3557;
+            transform: scale(1.1);
+        }
+
+        /* Game Info */
+        .game-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background-color: #0d1b2a;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(69, 123, 157, 0.5);
+        }
+
+        .game-info div {
+            font-size: 1rem;
+            color: #f1faee;
+        }
+
+        .game-info strong {
+            color: #a8dadc;
+        }
+
+        /* Footer */
+        footer {
+            background: #1d3557;
+            color: #e0e6f1;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 5px solid #a8dadc;
+        }
+
+        footer a {
+            color: #a8dadc;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        footer p {
+            margin-top: 10px;
+            font-size: 0.8rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .game-frame {
+                height: 300px;
+            }
+
+            .button-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Mythical Games</h1>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Game Title -->
+        <div class="game-title">Game 1</div>
+
+        <!-- Game Description -->
+        <p class="game-description">
+            Enjoy this fun and challenging game where you test your skills. Have fun playing!
+        </p>
+
+        <!-- Game Frame -->
+        <iframe 
+            src="https://www.onlinegames.io/games/2023/q2/geometry-dash-freezenova/index.html" 
+            class="game-frame" 
+            title="Game 1">
+        </iframe>
+
+        <!-- Button Bar -->
+        <div class="button-bar">
+            <button id="fullscreenBtn"><i class="fa-solid fa-expand"></i>Full Screen</button>
+            <button id="restartBtn"><i class="fa-solid fa-rotate-right"></i>Reload</button>
+            <button id="moreGamesBtn"><i class="fa-solid fa-gamepad"></i>More Games</button>
+        </div>
+
+        <!-- Game Info -->
+        <div class="game-info">
+            <div><strong>Developer:</strong> Example Developer</div>
+            <div><strong>Release Date:</strong> January 1, 2024</div>
+            <div><strong>Tags:</strong> Action, Puzzle, Multiplayer</div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Mythical Games. All rights reserved.</p>
+        <nav>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+        </nav>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const fullscreenBtn = document.getElementById('fullscreenBtn');
+            const restartBtn = document.getElementById('restartBtn');
+            const moreGamesBtn = document.getElementById('moreGamesBtn');
+
+            // Fullscreen functionality
+            fullscreenBtn.addEventListener('click', () => {
+                const gameFrame = document.querySelector('.game-frame');
+                if (gameFrame.requestFullscreen) {
+                    gameFrame.requestFullscreen();
+                } else if (gameFrame.webkitRequestFullscreen) { // Safari
+                    gameFrame.webkitRequestFullscreen();
+                } else if (gameFrame.msRequestFullscreen) { // IE/Edge
+                    gameFrame.msRequestFullscreen();
+                } else {
+                    alert('Fullscreen mode is not supported by your browser.');
+                }
+            });
+
+            // Restart functionality
+            restartBtn.addEventListener('click', () => {
+                const gameFrame = document.querySelector('.game-frame');
+                gameFrame.src = gameFrame.src; // Reload iframe
+            });
+
+            // More Games button
+            moreGamesBtn.addEventListener('click', () => {
+                window.location.href = 'https://example.com/more-games'; // Replace with actual link
+            });
+        });
+    </script>
+</body>
+</html>

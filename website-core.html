@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mythical</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0d1b2a;
+            color: #e0e6f1;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(90deg, #1d3557, #457b9d);
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #a8dadc;
+            margin: 0;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            width: 100%;
+            max-width: 600px;
+            padding: 10px;
+            background-color: #1d3557;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-bar input {
+            width: 80%;
+            padding: 10px;
+            border: none;
+            background-color: #0d1b2a;
+            color: #f1faee;
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-bar button {
+            background-color: #457b9d;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #a8dadc;
+        }
+
+        /* Navigation Bar */
+        .nav-buttons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-buttons a {
+            color: #f1faee;
+            background-color: #1d3557;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 25px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #a8dadc;
+            color: #1d3557;
+            transform: scale(1.1);
+        }
+
+        /* Dropdown Styles for Categories */
+        .category-dropdown {
+            position: absolute;
+            top: 50px; /* Adjusted to make it appear below the category button */
+            left: 0;
+            background-color: #1d3557;
+            border-radius: 5px;
+            display: none;
+            width: 200px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .category-dropdown a {
+            padding: 10px;
+            color: #f1faee;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .category-dropdown a:hover {
+            background-color: #457b9d;
+            color: #fff;
+        }
+
+        /* Category Button Adjustments */
+        #categoryButton {
+            position: relative; /* Ensure dropdown is positioned relative to this */
+            margin-top: 5px; /* Adjust margin to align with other buttons */
+        }
+
+        #categoryButton:hover .category-dropdown {
+            display: block;
+        }
+
+        /* Main Section */
+        main {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .game-category {
+            margin-top: 30px;
+            padding: 20px;
+            background: #1d3557;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-category h2 {
+            font-size: 2rem;
+            color: #a8dadc;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Horizontal Scrollable Grid */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-auto-flow: column;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            scrollbar-width: thin;
+        }
+
+        .game-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .game-grid::-webkit-scrollbar-thumb {
+            background-color: #457b9d;
+            border-radius: 4px;
+        }
+
+        .game-card {
+            width: 150px;
+            background-color: #0d1b2a;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px 5px rgba(69, 123, 157, 0.8);
+        }
+
+        .game-thumbnail {
+            width: 100%;
+            display: block;
+            border-bottom: 3px solid #457b9d;
+        }
+
+        .game-card h3 {
+            padding: 10px;
+            font-size: 1rem;
+            background-color: #457b9d;
+            color: #f1faee;
+            text-align: center;
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: #1d3557;
+            color: #e0e6f1;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 5px solid #a8dadc;
+        }
+
+        footer nav a {
+            color: #a8dadc;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        footer nav a:hover {
+            color: #f1faee;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <!-- Search Bar on the Left -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search games...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+
+        <!-- Navigation Buttons on the Right -->
+        <div class="nav-buttons">
+            <a href="#" class="active">Home</a>
+            <div id="categoryButton">
+                <a href="#">Categories</a>
+                <!-- Categories Dropdown -->
+                <div class="category-dropdown">
+                    <a href="#">Action</a>
+                    <a href="#">Shooting</a>
+                    <a href="#">Adventure</a>
+                    <a href="#">Racing</a>
+                </div>
+            </div>
+            <a href="#">About</a>
+        </div>
+    </header>
+
+    <!-- Main content area -->
+    <main>
+        <!-- Popular Games Section -->
+        <section class="game-category">
+            <h2>Popular Games</h2>
+
+            <!-- Action Games -->
+            <div class="game-category">
+                <h2>Action</h2>
+                <div class="game-grid">
+                    <div class="game-card">
+                        <img src="https://via.placeholder.com/150" alt="Action Game 1" class="game-thumbnail">
+                        <h3>Action Game 1</h3>
+                    </div>
+                    <div class="game-card">
+                        <img src="https://via.placeholder.com/150" alt="Action Game 2" class="game-thumbnail">
+                        <h3>Action Game 2</h3>
+                    </div>
+                    <div class="game-card">
+                        <img src="https://via.placeholder.com/150" alt="Action Game 3" class="game-thumbnail">
+                        <h3>Action Game 3</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shooting Games -->
+            <div class="game-category">
+                <h2>Shooting</h2>
+                <div class="game-grid">
+                    <div class="game-card">
+                        <img src="https://via.placeholder.com/150" alt="Shooting Game 1" class="game-thumbnail">
+                        <h3>Shooting Game 1</h3>
+                    </div>
+                    <div class="game-card">
+                        <img src="https://via.placeholder.com/150" alt="Shooting Game 2" class="game-thumbnail">
+                        <h3>Shooting Game 2</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Adventure Games -->
+            <div class="game-category">
+                <h2>Adventure</h2>
+                <div class="game-grid">
+                    <div class="game-card">
+                        <img src="https://via.placeholder.com/150" alt="Adventure Game 1" class="game-thumbnail">
+                        <h3>Adventure Game 1</h3>
+                    </div>
+                    <div class="game-card">
+                        <img src="https://via.placeholder.com/150" alt="Adventure Game 2" class="game-thumbnail">
+                        <h3>Adventure Game 2</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <nav>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+        </nav>
+        <p>&copy; 2024 Mythical. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript to handle "Categories" dropdown toggle on hover
+        const categoryButton = document.getElementById('categoryButton');
+        const categoryDropdown = categoryButton.querySelector('.category-dropdown');
+
+        categoryButton.addEventListener('mouseenter', () => {
+            categoryDropdown.style.display = 'block';
+        });
+
+        categoryButton.addEventListener('mouseleave', () => {
+            categoryDropdown.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
